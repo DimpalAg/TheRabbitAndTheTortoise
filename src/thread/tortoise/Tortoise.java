@@ -7,11 +7,6 @@ public class Tortoise extends Thread {
     private static final int MILESTONES = 5;
     private final Thread tortoise;
 
-    public Tortoise(Thread tortoise, Thread tortoise1) {
-        super("Tortoise");
-        this.tortoise = tortoise1;
-    }
-
     public Tortoise() {
         this.tortoise = new Thread(this, "Tortoise");
     }
@@ -20,6 +15,7 @@ public class Tortoise extends Thread {
         return tortoise;
     }
 
+    @Override
     public void run() {
         for (int index = 0; index < MILESTONES; index++) {
             switch (index) {
@@ -45,11 +41,11 @@ public class Tortoise extends Thread {
                     System.out.println("The tortoise has reached the finish line!");
                     break;
             }
-        }
-        try {
-            Thread.sleep(1500L);
-        } catch (InterruptedException e) {
-            System.err.println("The rabbit has lost the path!");
+            try {
+                Thread.sleep(1500L);
+            } catch (InterruptedException e) {
+                System.err.println("The tortoise has lost the path!");
+            }
         }
         JOptionPane.showConfirmDialog(
                 null,
