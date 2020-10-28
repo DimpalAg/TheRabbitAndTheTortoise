@@ -1,5 +1,7 @@
 package thread.tortoise;
 
+import javax.swing.*;
+
 public class Tortoise extends Thread {
 
     private static final int MILESTONES = 5;
@@ -39,8 +41,14 @@ public class Tortoise extends Thread {
         } catch (InterruptedException e) {
             System.err.println("The rabbit has lost the path!");
         }
-    }
+        JOptionPane.showConfirmDialog(
+                null,
+                "The Rabbit has completed the race!",
+                "Rabbit",
+                JOptionPane.OK_CANCEL_OPTION
+        );
     }
 }
+
 
 
