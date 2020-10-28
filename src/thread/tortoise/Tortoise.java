@@ -5,9 +5,19 @@ import javax.swing.*;
 public class Tortoise extends Thread {
 
     private static final int MILESTONES = 5;
+    private final Thread tortoise;
 
-    public Tortoise(Thread tortoise) {
+    public Tortoise(Thread tortoise, Thread tortoise1) {
         super("Tortoise");
+        this.tortoise = tortoise1;
+    }
+
+    public Tortoise() {
+        this.tortoise = new Thread(this, "Tortoise");
+    }
+
+    public Thread getTortoise() {
+        return tortoise;
     }
 
     public void run() {
@@ -26,7 +36,7 @@ public class Tortoise extends Thread {
                     System.out.println("The Tortoise has reached the Big Oak Tree!");
                     System.out.println("The Tortoise is leading and hence is going to sleep!");
                     try {
-                        Thread.sleep(18000L);
+                        Thread.sleep(1800L);
                     } catch (InterruptedException e) {
                         System.err.println("The Tortoise's sleep got interrupted!");
                     }
@@ -43,12 +53,13 @@ public class Tortoise extends Thread {
         }
         JOptionPane.showConfirmDialog(
                 null,
-                "The Rabbit has completed the race!",
-                "Rabbit",
+                "The tortoise has completed the race!",
+                "Tortoise",
                 JOptionPane.OK_CANCEL_OPTION
         );
     }
 }
+
 
 
 
