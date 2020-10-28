@@ -34,6 +34,12 @@ public class Tortoise extends Thread {
                     break;
             }
         }
+        try {
+            Thread.sleep(1500L);
+        } catch (InterruptedException e) {
+            System.err.println("The rabbit has lost the path!");
+        }
+    }
     }
 }
 
